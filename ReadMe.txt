@@ -1,3 +1,7 @@
+NOTE ::
+========================
+I have used the SMJobBless example of Apple documentation and modified accordingly to support NSXPCConnection in order to establish a communication between helper tool and main application. 
+
 Read Me About SMJobBless
 ========================
 1.5
@@ -37,6 +41,18 @@ The sample was built using Xcode 4.6 on OS X 10.8.2.
 The Service Management framework uses code signatures to ensure that the helper tool is the one expected to be run by the main application. SMJobBless assumes you're using an Apple-issued Developer ID.  If you don't have a Developer ID, you should get one before proceeding.
 
 <https://developer.apple.com/resources/developer-id/>
+
+Modification from original : Related to code signing
+================================================
+In order to build this create a certificate in the keychain access.
+1. Open 'Keychain Access'
+2. Go to 'Certificate Assistant' -> 'Create a certificate'
+3. Put Name as 'xxxxxxxxxx'. (10 'x' characters)
+4. Set 'Identity' type as 'Self Signed Root'
+5. Set 'Certificate Type' as 'Code Signing'
+
+And you are good to go. Anyway you can choose any code signing mechanism you want i.e. Signing with your own Apple Developer ID.
+================================================
 
 The project is set up to use whatever Developer ID you have installed.  However, various entries in various Info.plist files reference the specifics of this Developer ID and these have to be changed to reference your Developer ID.  You can do this as follows:
 
@@ -143,3 +159,4 @@ Apple Developer Technical Support
 Core OS/Hardware
 
 27 Aug 2013
+
