@@ -1,6 +1,9 @@
 /*
  
-    File: SMJobBlessHelper.c
+ Modifying the original contents
+ ____________________________________________________________________
+ 
+    File: SMJobBlessHelper.mm
 Abstract: A helper tool that doesn't do anything event remotely interesting.
 See the ssd sample for how to use GCD and launchd to set up an on-demand
 server via sockets.

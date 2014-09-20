@@ -75,16 +75,15 @@ Copyright (C) 2013 Apple Inc. All Rights Reserved.
 		NSLog(@"Something went wrong! %@ / %d", [error domain], (int) [error code]);
 	else
     {
-		/* At this point, the job is available. However, this is a very
-		 * simple sample, and there is no IPC infrastructure set up to
-		 * make it launch-on-demand. You would normally achieve this by
-		 * using XPC (via a MachServices dictionary in your launchd.plist).
-		 */
+		// At this point, the job is available.
 		NSLog(@"Job is available!");
 		
 		[self->_textField setHidden:false];
         
-        // Create a connection to the service and send it the message along with our file handles.
+        /* There is a helper tool that should be installed in /Library/PreviledgeHelperTools 
+         * location. We have also configured that helper tool to launch-on-demand. */
+        
+        // Create a connection to the service and send it the message along with requests.
         NSXPCConnection *helperToolServiceConnection = [[NSXPCConnection alloc] initWithMachServiceName:kHelperToolName options:NSXPCConnectionPrivileged];
         helperToolServiceConnection.remoteObjectInterface = [NSXPCInterface interfaceWithProtocol:@protocol(SMJobBlessHelperProtocol)];
         [helperToolServiceConnection resume];

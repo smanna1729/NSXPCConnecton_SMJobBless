@@ -8,7 +8,7 @@
 {
     syslog (LOG_NOTICE, "new incoming connection");
 #pragma unused(listener)
-    // Configure the new connection and resume it. Because this is a singleton object, we set 'self' as the exported object and configure the connection to export the 'Zip' protocol that we implement on this object.
+    // Configure the new connection and resume it. Because this is a singleton object, we set 'self' as the exported object and configure the connection to export the 'SMJobBlessHelperProtocol' protocol that we implement on this object.
     newConnection.exportedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(SMJobBlessHelperProtocol)];
     newConnection.exportedObject = self;
     [newConnection resume];
